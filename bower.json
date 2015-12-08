@@ -1,10 +1,10 @@
 {
   "name": "angular-ui-toolbox",
-  "version": "v0.1",
+  "version": "0.1",
   "authors": [
     "mosluce <mosluce@gmail.com>"
   ],
-  "description": "",
+  "description": "Angular UI 元件包",
   "main": "",
   "moduleType": [],
   "license": "MIT",
