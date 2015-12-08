@@ -22,6 +22,7 @@
     "jquery": "~2.1.4"
   },
   "devDependencies": {
-    "jquery.steps": "jquery-steps#~1.1.0"
+    "jquery.steps": "jquery-steps#~1.1.0",
+    "select2": "~4.0.1"
   }
 }
