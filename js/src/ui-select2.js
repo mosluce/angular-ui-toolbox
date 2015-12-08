@@ -3,11 +3,10 @@
         .directive('uiSelect2', ['$timeout', function ($timeout) {
             return {
                 restrict: 'A',
-                require: 'ngModel',
-                link: function (scope, element, attr, model) {
+                link: function (scope, element, attr) {
                     $timeout(function () {
-                        var setting = scope.$eval(attr.setting) || {};
-                        element.select2(setting);
+                        var settings = scope.$eval(attr.settings) || {};
+                        element.select2(settings);
                     });
                 }
             }

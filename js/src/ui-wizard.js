@@ -5,10 +5,10 @@
         return {
             restrict: 'A',
             link: function (scope, element, attr) {
-                var options = scope.$eval(attr.options);
+                var settings = scope.$eval(attr.settings);
 
                 element.wrapInner('<div class="wizard-wrapper">');
-                var steps = element.children('.wizard-wrapper').steps(options);
+                var steps = element.children('.wizard-wrapper').steps(settings);
                 $compile(steps)(scope);
             }
         }
