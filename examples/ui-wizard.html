@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Steps -> AngularJS</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ui-wizard.css">
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+
+    <script src="../js/build/ui-wizard.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var app = angular.module('app', ['uiWizard']);
+            app.controller('WizardCtrl', ['$scope', function ($scope) {
+
+                $scope.wizardOptions = {
+                    bodyTag: 'fieldset',
+                    //events
+                    onInit: function() {
+                        console.log(arguments);
+                    },
+                    onStepChanging: function () {
+                        console.log(arguments);
+                        return true;
+                    },
+                    //labels
+                    labels: {
+                        previous: 'Back'
+                    }
+                };
+            }]);
+        })();
+    </script>
+</head>
+<body ng-app="app">
+<div ng-controller="WizardCtrl">
+    <form novalidate name="form" ui-wizard
+          options="wizardOptions">
+        <h1>Step 1</h1>
+        <fieldset>
+            <input ng-model="text">
+            {{text}}
+        </fieldset>
+        <h1>Step 2</h1>
+        <fieldset></fieldset>
+    </form>
+</div>
+</body>
+</html>
