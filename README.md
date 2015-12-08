@@ -3,6 +3,9 @@
 bower install angular-ui-toolbox
 ```
 
+### 使用方法
+請參考 examples
+
 ### Directives 元件庫
 1. ui-wizard
     - 參數
