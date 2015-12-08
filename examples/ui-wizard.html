@@ -5,20 +5,22 @@
     <title>jQuery Steps -> AngularJS</title>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/ui-wizard.css">
+    <link rel="stylesheet" href="../css/ui-select2.css">
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
 
     <script src="../js/build/ui-wizard.min.js"></script>
+    <script src="../js/build/ui-select2.min.js"></script>
     <script type="text/javascript">
         (function () {
-            var app = angular.module('app', ['uiWizard']);
+            var app = angular.module('app', ['uiWizard', 'uiSelect2']);
             app.controller('WizardCtrl', ['$scope', function ($scope) {
 
                 $scope.wizardOptions = {
                     bodyTag: 'fieldset',
                     //events
-                    onInit: function() {
+                    onInit: function () {
                         console.log(arguments);
                     },
                     onStepChanging: function () {
@@ -31,6 +33,14 @@
                     }
                     //etc..., more info : https://github.com/rstaib/jquery-steps/wiki/Settings
                 };
+
+                $scope.selectOptions = [{
+                    label: 'Hello',
+                    value: '123'
+                }, {
+                    label: 'World',
+                    value: '456'
+                }];
             }]);
         })();
     </script>
@@ -41,8 +51,14 @@
           data-settings="wizardOptions">
         <h1>Step 1</h1>
         <fieldset>
-            <input ng-model="text">
-            {{text}}
+            <select ui-select2
+                    ng-options="item.value as item.label for item in selectOptions"
+                    ng-model="v"
+                    style="width: 100%;"></select>
+
+            <div>
+                {{v}}
+            </div>
         </fieldset>
         <h1>Step 2</h1>
         <fieldset></fieldset>
