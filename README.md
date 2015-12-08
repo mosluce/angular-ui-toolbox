@@ -1,5 +1,9 @@
-##元件庫
-### Directives
+### 安裝方法
+```sh
+bower install angular-ui-toolbox
+```
+
+### Directives 元件庫
 1. ui-wizard
     - 參數
         - settings (或 data-settings) : jquery-steps 初始化設定值 [參考文件](https://github.com/rstaib/jquery-steps/wiki/Settings)
