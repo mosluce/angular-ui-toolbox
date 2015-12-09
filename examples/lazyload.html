@@ -8,7 +8,7 @@
 <body ng-app="app">
 
 <div class="container" ng-controller="LazyCtrl">
-    <div oc-lazy-load="wizardDeps">
+    <div oc-lazy-load="deps">
         <div ccmos-wizard data-settings="{bodyTag: 'fieldset'}">
             <h1></h1>
             <fieldset></fieldset>
@@ -27,8 +27,8 @@
     (function () {
         var app = angular.module('app', ["oc.lazyLoad"]);
 
-        app.controller('LazyCtrl', ['$scope', function ($scope) {
-            $scope.wizardDeps = ['../js/build/ccmos-wizard.min.js', '../css/ccmos-wizard.min.css'];
+        app.controller('LazyCtrl', ['$scope', '$ocLazyLoad', function ($scope, $ocLazyLoad) {
+            $scope.deps = ['../js/build/ccmos-wizard.min.js', '../css/ccmos-wizard.min.css'];
         }]);
     })();
 </script>
