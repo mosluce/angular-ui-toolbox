@@ -1,13 +1,31 @@
 (function () {
     angular.module('uiDatepicker', [])
-        .directive('uiDatepicker', [function () {
+        .directive('uiDatepicker', ['$timeout', function ($timeout) {
             return {
                 restrict: 'A',
+                scope: {
+                    model: '=',
+                    settings: '='
+                },
                 link: function (scope, elemnet, attr) {
-                    var settings = scope.$eval(attr.settings) || {};
+                    $timeout(function () {
+                        var settings = scope.settings || {};
 
-                    elemnet.wrap('<div class="input-group date">').after('<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>');
-                    elemnet.parent('.input-group.date').datepicker(settings);
+                        elemnet.wrap('<div class="input-group date">').after('<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>');
+                        var dp = elemnet.parent('.input-group.date').datepicker(settings);
+
+                        dp.datepicker().on('changeDate', function () {
+                            var ndate = dp.datepicker('getDate');
+
+                            if (ndate != scope.model) {
+                                scope.$apply(function () {
+                                    scope.model = ndate;
+                                });
+                            }
+                        });
+
+                        dp.datepicker('update', scope.model);
+                    });
                 }
             }
         }]);
