@@ -11,7 +11,9 @@
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
 
-    <script src="../js/src/ccmos-spinkit.js"></script>
+    <!--<script src="../js/src/ccmos-spinkit.js"></script>-->
+    <!--<script src="../js/src/ccmos-spinkit-templates.js"></script>-->
+    <script src="../js/build/ccmos-spinkit.min.js"></script>
     <script type="text/javascript">
         angular.module('app', ['ccmosSpinkit'])
                 .controller('SpinKitCtrl', [function() {
@@ -23,16 +25,16 @@
     <div class="container-fluid" ng-controller="SpinKitCtrl">
         <div class="row">
             <div class="col-md-3">
-                <ccmos-sk-rotating-plane></ccmos-sk-rotating-plane>
+                <ccmos-sk-circle></ccmos-sk-circle>
             </div>
             <div class="col-md-3">
-                <ccmos-sk-double-bounce></ccmos-sk-double-bounce>
+                <ccmos-sk-chasing-dots></ccmos-sk-chasing-dots>
             </div>
             <div class="col-md-3">
                 <ccmos-sk-wave></ccmos-sk-wave>
             </div>
             <div class="col-md-3">
-                <ccmos-sk-wandering-cubes></ccmos-sk-wandering-cubes>
+                <ccmos-sk-cube-grid></ccmos-sk-cube-grid>
             </div>
         </div>
     </div>
