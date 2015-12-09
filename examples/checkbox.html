@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iCheck</title>
+
+    <link rel="stylesheet"
+          href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/icheck-skins/all.css">
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js"></script>
+
+    <!--<script src="../bower_components/iCheck/icheck.min.js"></script>-->
+    <!--<script src="../js/src/ccmos-checkbox.js"></script>-->
+    <script src="../js/build/ccmos-checkbox.min.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            angular.module('app', ['ccmosCheckbox'])
+                    .controller('iCheckCtrl', ['$scope', function ($scope) {
+                        $scope.icheckSettings = {
+                            checkboxClass: 'icheckbox_minimal',
+                            radioClass: 'iradio_minimal'
+                        };
+                    }]);
+        })();
+    </script>
+</head>
+<body ng-app="app">
+<div class="container" ng-controller="iCheckCtrl">
+    <div class="form-group">
+        <div class="checkbox">
+            <div>
+                <label>
+                    <input type="checkbox" ng-model="selectedAll" ccmos-checkbox data-settings="icheckSettings"> Select
+                    ALL
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" ng-model="model.selectedA" ccmos-checkbox data-settings="icheckSettings"
+                           ng-checked="selectedAll"> SelectA
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" ng-model="model.selectedB" ccmos-checkbox data-settings="icheckSettings"
+                           ng-checked="selectedAll"> SelectB
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-default" ng-click="model.selectedA=!model.selectedA">Toggle Selected A
+        </button>
+    </div>
+    <div class="form-group">
+        <div class="radio">
+            <div>
+                <label>
+                    <input type="radio" ng-model="model.radioValue" name="radioValue" value="A" ng-checked="true"
+                           ccmos-checkbox data-settings="icheckSettings"> Value = A
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" ng-model="model.radioValue" name="radioValue" value="B" ccmos-checkbox
+                           data-settings="icheckSettings"> Value = B
+                </label>
+            </div>
+        </div>
+    </div>
+    <div>{{model}}</div>
+</div>
+</body>
+</html>
