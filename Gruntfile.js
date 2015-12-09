@@ -29,12 +29,24 @@ module.exports = function (grunt) {
                     'css/ccmos-wizard.css': 'scss/ccmos-wizard.scss'
                 }
             }
+        },
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'css',
+                    ext: '.min.css'
+                }]
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('default', ['ngtemplates', 'uglify', 'sass']);
+    grunt.registerTask('default', ['ngtemplates', 'uglify', 'sass', 'cssmin']);
 };

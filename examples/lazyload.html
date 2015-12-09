@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lazy Load</title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body ng-app="app">
+
+<div class="container" ng-controller="LazyCtrl">
+    <div oc-lazy-load="wizardDeps">
+        <div ccmos-wizard data-settings="{bodyTag: 'fieldset'}">
+            <h1></h1>
+            <fieldset></fieldset>
+            <h1></h1>
+            <fieldset></fieldset>
+        </div>
+    </div>
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+
+<script type="text/javascript">
+    (function () {
+        var app = angular.module('app', ["oc.lazyLoad"]);
+
+        app.controller('LazyCtrl', ['$scope', function ($scope) {
+            $scope.wizardDeps = ['../js/build/ccmos-wizard.min.js', '../css/ccmos-wizard.min.css'];
+        }]);
+    })();
+</script>
+</body>
+</html>
