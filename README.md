@@ -7,13 +7,13 @@ bower install angular-ui-toolbox
 請參考 examples
 
 ### 元件來源
-#### ccmos-checkbox
+- ccmos-checkbox -> 
 [iCheck](https://github.com/fronteed/iCheck)
-#### ccmos-datepicker
+- ccmos-datepicker -> 
 [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
-#### ccmos-select2
+- ccmos-select2 -> 
 [select2](https://github.com/select2/select2)
-#### ccmos-wizard
+- ccmos-wizard -> 
 [jquery-steps](https://github.com/rstaib/jquery-steps)
 
 ### CHANGE LOG
