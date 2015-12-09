@@ -25,6 +25,10 @@
                         });
 
                         dp.datepicker('update', scope.model);
+
+                        scope.$watch(scope.model, function (date) {
+                            if (date) dp.datepicker('update', date);
+                        });
                     });
                 }
             }
