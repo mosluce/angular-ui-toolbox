@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tooltip</title>
+
+    <link rel="stylesheet"
+          href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/icheck-skins/all.css">
+
+    <script type="text/javascript"
+            src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="../bower_components/angular/angular.min.js"></script>
+
+    <script src="../js/src/ccmos-popover.js"></script>
+    <script type="text/javascript">
+        angular.module('app', ['ccmosPopover']).controller('TooltipCtrl', ['$scope', function ($scope) {
+            $scope.setting_a = {
+                trigger: 'hover',
+                title: 'Hello',
+                placement: 'bottom',
+                template: '' +
+                '<div class="popover" role="tooltip">' +
+                '<div class="arrow"></div>' +
+                '<div class="img"></div>' +
+                '</div>'
+            };
+        }]);
+    </script>
+
+    <style type="text/css">
+        .popover .img {
+            background: url("https://scontent-tpe1-1.xx.fbcdn.net/hphotos-xlf1/v/t1.0-9/12316479_1182521905095648_3923843932848452052_n.jpg?oh=46f5d39a83295b80ab92b6fafbae4d95&oe=56DF1EE9");
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body ng-app="app">
+<div class="container" style="margin-top: 120px;" ng-controller="TooltipCtrl">
+    <div class="row">
+        <div class="col-md-3">
+            <span ccmos-popover data-settings="setting_a" data-show="showImage">12344455</span>
+            <button class="btn btn-default" ng-click="showImage=!showImage">Show/Hide</button>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>
