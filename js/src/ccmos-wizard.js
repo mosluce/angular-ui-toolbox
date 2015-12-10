@@ -6,9 +6,17 @@
             restrict: 'A',
             compile: function (element, attr) {
                 element.wrapInner('<div class="wizard-wrapper">');
-                var steps = element.children('.wizard-wrapper').steps({
-                    bodyTag: attr.bodyTag || 'fieldset'
-                });
+
+                var settings = {
+                    bodyTag: attr.bodyTag || 'fieldset',
+                    labels: {}
+                };
+
+                if (attr.labelNext) settings.labels.next = attr.labelNext;
+                if (attr.labelProvious) settings.labels.previous = attr.labelProvious;
+                if (attr.labelFinish) settings.labels.finish = attr.labelFinish;
+
+                var steps = element.children('.wizard-wrapper').steps(settings);
 
                 return {
                     pre: function (scope, element, attr) {
