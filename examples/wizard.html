@@ -6,32 +6,26 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/ccmos-wizard.css">
     <link rel="stylesheet" href="../css/ccmos-select2.css">
+    <link rel="stylesheet" href="../css/ccmos-datepicker.css">
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
 
-    <script src="../js/build/ccmos-wizard.min.js"></script>
+    <!--<script src="../js/build/ccmos-wizard.min.js"></script>-->
+    <script src="../bower_components/jquery.steps/build/jquery.steps.min.js"></script>
+    <script src="../js/src/ccmos-wizard.js"></script>
+    <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="../js/src/ccmos-datepicker.js"></script>
     <script src="../js/build/ccmos-select2.min.js"></script>
     <script type="text/javascript">
         (function () {
-            var app = angular.module('app', ['ccmosWizard', 'ccmosSelect2']);
+            var app = angular.module('app', ['ccmosWizard', 'ccmosSelect2', 'ccmosDatepicker']);
             app.controller('WizardCtrl', ['$scope', function ($scope) {
 
-                $scope.wizardOptions = {
-                    bodyTag: 'fieldset',
-                    //events
-                    onInit: function () {
-                        console.log(arguments);
-                    },
+                $scope.events = {
                     onStepChanging: function () {
-                        console.log(arguments);
                         return true;
-                    },
-                    //labels
-                    labels: {
-                        previous: 'Back'
                     }
-                    //etc..., more info : https://github.com/rstaib/jquery-steps/wiki/Settings
                 };
 
                 $scope.selectOptions = [{
@@ -48,20 +42,23 @@
 <body ng-app="app">
 <div ng-controller="WizardCtrl">
     <form novalidate name="form" ccmos-wizard
-          data-settings="wizardOptions">
+          data-events="events">
         <h1>Step 1</h1>
         <fieldset>
             <select ccmos-select2
                     ng-options="item.value as item.label for item in selectOptions"
-                    ng-model="v"
+                    ng-model="selectedValue"
                     style="width: 100%;"></select>
 
             <div>
-                {{v}}
+                {{selectedValue}}
             </div>
         </fieldset>
         <h1>Step 2</h1>
-        <fieldset></fieldset>
+        <fieldset>
+            <ccmos-datepicker ng-model="date"></ccmos-datepicker>
+            {{date}}
+        </fieldset>
     </form>
 </div>
 </body>

@@ -4,12 +4,24 @@
     toolbox.directive('ccmosWizard', ['$compile', function ($compile) {
         return {
             restrict: 'A',
-            link: function (scope, element, attr) {
-                var settings = scope.$eval(attr.settings);
-
+            compile: function (element, attr) {
                 element.wrapInner('<div class="wizard-wrapper">');
-                var steps = element.children('.wizard-wrapper').steps(settings);
-                $compile(steps)(scope);
+                var steps = element.children('.wizard-wrapper').steps({
+                    bodyTag: attr.bodyTag || 'fieldset'
+                });
+
+                return {
+                    pre: function (scope, element, attr) {
+                    },
+                    post: function (scope, element, attr) {
+                        var events = scope.$eval(attr.events) || {};
+
+                        steps.on('stepChanging', events.onStepChanging);
+                        steps.on('stepChanged', events.onStepChanged);
+                        steps.on('finishing', events.onFinishing);
+                        steps.on('finished', events.onFinished);
+                    }
+                }
             }
         }
 
