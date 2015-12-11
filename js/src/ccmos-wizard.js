@@ -2,8 +2,17 @@
     var toolbox = angular.module('ccmosWizard', []);
 
     toolbox.directive('ccmosWizard', ['$compile', function ($compile) {
+        var steps;
+
         return {
             restrict: 'A',
+            controller: ['$scope', function ($scope) {
+                $scope.$on('ccmos.wizard.first', function () {
+                    while (steps.steps('getCurrentIndex') != 0) {
+                        steps.steps('previous');
+                    }
+                });
+            }],
             compile: function (element, attr) {
                 element.wrapInner('<div class="wizard-wrapper">');
 
@@ -16,7 +25,7 @@
                 if (attr.labelProvious) settings.labels.previous = attr.labelProvious;
                 if (attr.labelFinish) settings.labels.finish = attr.labelFinish;
 
-                var steps = element.children('.wizard-wrapper').steps(settings);
+                steps = element.children('.wizard-wrapper').steps(settings);
 
                 return {
                     pre: function (scope, element, attr) {
