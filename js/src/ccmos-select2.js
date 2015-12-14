@@ -10,7 +10,7 @@
                         element.select2(settings);
                         element.on('select2-removed', function() {
                             scope.$apply(function() {
-                                ngModel.$setViewValue(null);
+                                ngModel.$setViewValue(undefined);
                             })
                         });
                     });
