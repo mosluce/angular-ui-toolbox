@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switchery</title>
+
+    <link rel="stylesheet" href="../css/ccmos-switchery.css">
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/switchery/dist/switchery.min.js"></script>
+    <script src="../js/src/ccmos-switchery.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var app = angular.module('app', ['ccmosSwitchery']);
+
+            app.controller('SWCtrl', ['$scope', function ($scope) {
+                $scope.checked = true;
+            }]);
+        })();
+    </script>
+</head>
+<body ng-app="app" style="padding: 32px;">
+<div ng-controller="SWCtrl">
+    <input type="checkbox" name="hello" ng-model="checked" ccmos-switchery>
+    {{checked}}
+</div>
+</body>
+</html>

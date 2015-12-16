@@ -8,7 +8,8 @@ module.exports = function (grunt) {
                     'js/build/ccmos-datepicker.min.js': ['bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js', 'js/src/ccmos-datepicker.js'],
                     'js/build/ccmos-checkbox.min.js': ['bower_components/iCheck/icheck.min.js', 'js/src/ccmos-checkbox.js'],
                     'js/build/ccmos-spinkit.min.js': ['js/src/ccmos-spinkit.js', 'js/src/ccmos-spinkit-templates.js'],
-                    'js/build/ccmos-popover.min.js': ['js/src/ccmos-popover.js']
+                    'js/build/ccmos-popover.min.js': ['js/src/ccmos-popover.js'],
+                    'js/build/ccmos-switchery.min.js': ['bower_components/switchery/dist/switchery.min.js', 'js/src/ccmos-switchery.js']
                 }
             }
         },
