@@ -46,7 +46,10 @@
 </head>
 <body ng-app="app">
 <div ng-controller="WizardCtrl">
-    <form novalidate name="form" ccmos-wizard
+    <form novalidate name="form"
+          ccmos-wizard
+          data-enable-cancel-button="true"
+          data-label-previous="Back"
           data-events="events">
         <h1>Step 1</h1>
         <fieldset>

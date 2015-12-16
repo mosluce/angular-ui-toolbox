@@ -16,17 +16,18 @@
             compile: function (element, attr) {
                 element.wrapInner('<div class="wizard-wrapper">');
 
-                var settings = {
-                    bodyTag: attr.bodyTag || 'fieldset',
-                    labels: {}
-                };
+                var labels = {};
+                attr.bodyTag = attr.bodyTag || 'fieldset';
 
-                if (attr.labelNext) settings.labels.next = attr.labelNext;
-                if (attr.labelProvious) settings.labels.previous = attr.labelProvious;
-                if (attr.labelFinish) settings.labels.finish = attr.labelFinish;
-                if (attr.enableCancelButton) settings['enable-cancel-button'] = attr.enableCancelButton == 'true';
+                for (var key in attr) {
+                    if (/^label/.test(key)) {
+                        labels[key.replace(/^label/, '').toLowerCase()] = attr[key];
+                    }
+                }
 
-                steps = element.children('.wizard-wrapper').steps(settings);
+                attr.labels = labels;
+
+                steps = element.children('.wizard-wrapper').steps(attr);
 
                 return {
                     pre: function (scope, element, attr) {
