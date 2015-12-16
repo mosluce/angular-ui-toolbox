@@ -24,6 +24,7 @@
                 if (attr.labelNext) settings.labels.next = attr.labelNext;
                 if (attr.labelProvious) settings.labels.previous = attr.labelProvious;
                 if (attr.labelFinish) settings.labels.finish = attr.labelFinish;
+                if (attr.enableCancelButton) settings['enable-cancel-button'] = attr.enableCancelButton == 'true';
 
                 steps = element.children('.wizard-wrapper').steps(settings);
 
