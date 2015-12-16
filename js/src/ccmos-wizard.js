@@ -39,6 +39,7 @@
                         steps.on('stepChanged', events.onStepChanged);
                         steps.on('finishing', events.onFinishing);
                         steps.on('finished', events.onFinished);
+                        steps.on('canceled', events.onCanceled);
                     }
                 }
             }
