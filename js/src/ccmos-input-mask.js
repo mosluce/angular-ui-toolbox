@@ -6,7 +6,12 @@
             restrict: 'A',
             require: 'ngModel',
             link: function (scope, element, attr, ngModel) {
-                element.inputmask(attr.ccmosInputMask);
+                var settings = scope.$eval(attr.settings) || {};
+
+                if (typeof settings.autoUnmask === 'undefined')
+                    settings.autoUnmask = true;
+
+                element.inputmask(attr.ccmosInputMask, settings);
             }
         }
     }]);
