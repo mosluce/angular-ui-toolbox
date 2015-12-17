@@ -9,7 +9,8 @@ module.exports = function (grunt) {
                     'js/build/ccmos-checkbox.min.js': ['bower_components/iCheck/icheck.min.js', 'js/src/ccmos-checkbox.js'],
                     'js/build/ccmos-spinkit.min.js': ['js/src/ccmos-spinkit.js', 'js/src/ccmos-spinkit-templates.js'],
                     'js/build/ccmos-popover.min.js': ['js/src/ccmos-popover.js'],
-                    'js/build/ccmos-switchery.min.js': ['bower_components/switchery/dist/switchery.min.js', 'js/src/ccmos-switchery.js']
+                    'js/build/ccmos-switchery.min.js': ['bower_components/switchery/dist/switchery.min.js', 'js/src/ccmos-switchery.js'],
+                    'js/build/ccmos-input-mask.js': ['bower_components/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js', 'js/src/ccmos-input-mask.js']
                 }
             }
         },
