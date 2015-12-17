@@ -11,12 +11,11 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.min.js"></script>
 
-    <!--<script src="../js/build/ccmos-wizard.min.js"></script>-->
-    <!--<script src="../bower_components/jquery.steps/build/jquery.steps.min.js"></script>-->
-    <!--<script src="../js/src/ccmos-wizard.js"></script>-->
+    <script src="../bower_components/jquery.steps/build/jquery.steps.min.js"></script>
+    <script src="../js/src/ccmos-wizard.js"></script>
     <!--<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>-->
     <!--<script src="../js/src/ccmos-datepicker.js"></script>-->
-    <script src="../js/build/ccmos-wizard.min.js"></script>
+    <!--<script src="../js/build/ccmos-wizard.min.js"></script>-->
     <script src="../js/build/ccmos-datepicker.min.js"></script>
     <script src="../js/build/ccmos-select2.min.js"></script>
     <script type="text/javascript">
@@ -37,13 +36,20 @@
                     label: 'World',
                     value: '456'
                 }];
+
+                $scope.first = function() {
+                    $scope.$emit('ccmos.wizard.first');
+                }
             }]);
         })();
     </script>
 </head>
 <body ng-app="app">
 <div ng-controller="WizardCtrl">
-    <form novalidate name="form" ccmos-wizard
+    <form novalidate name="form"
+          ccmos-wizard
+          data-enable-cancel-button="true"
+          data-label-previous="Back"
           data-events="events">
         <h1>Step 1</h1>
         <fieldset>
@@ -62,6 +68,8 @@
             {{date}}
         </fieldset>
     </form>
+
+    <button class="btn btn-default" ng-click="first()">Go to first step</button>
 </div>
 </body>
 </html>

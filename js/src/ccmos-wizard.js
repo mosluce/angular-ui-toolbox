@@ -2,21 +2,32 @@
     var toolbox = angular.module('ccmosWizard', []);
 
     toolbox.directive('ccmosWizard', ['$compile', function ($compile) {
+        var steps;
+
         return {
             restrict: 'A',
+            controller: ['$scope', function ($scope) {
+                $scope.$on('ccmos.wizard.first', function () {
+                    while (steps.steps('getCurrentIndex') != 0) {
+                        steps.steps('previous');
+                    }
+                });
+            }],
             compile: function (element, attr) {
                 element.wrapInner('<div class="wizard-wrapper">');
 
-                var settings = {
-                    bodyTag: attr.bodyTag || 'fieldset',
-                    labels: {}
-                };
+                var labels = {};
+                attr.bodyTag = attr.bodyTag || 'fieldset';
 
-                if (attr.labelNext) settings.labels.next = attr.labelNext;
-                if (attr.labelProvious) settings.labels.previous = attr.labelProvious;
-                if (attr.labelFinish) settings.labels.finish = attr.labelFinish;
+                for (var key in attr) {
+                    if (/^label/.test(key)) {
+                        labels[key.replace(/^label/, '').toLowerCase()] = attr[key];
+                    }
+                }
 
-                var steps = element.children('.wizard-wrapper').steps(settings);
+                attr.labels = labels;
+
+                steps = element.children('.wizard-wrapper').steps(attr);
 
                 return {
                     pre: function (scope, element, attr) {
@@ -28,6 +39,7 @@
                         steps.on('stepChanged', events.onStepChanged);
                         steps.on('finishing', events.onFinishing);
                         steps.on('finished', events.onFinished);
+                        steps.on('canceled', events.onCanceled);
                     }
                 }
             }
