@@ -27,7 +27,11 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Example 1: Tel</label>
-                    <input ccmos-input-mask="(99)999-9999" type="text" class="form-control" ng-model="data.ex_1">
+                    <input ccmos-input-mask="(99)9{3}-9{4,5}" type="text" class="form-control" ng-model="data.ex_1">
+                </div>
+                <div class="form-group">
+                    <label>Example 1: Regex</label>
+                    <input ccmos-input-mask="Regex" data-inputmask-regex="([a-z]|[A-Z])[0-9]{9}" type="text" class="form-control" ng-model="data.ex_2">
                 </div>
             </div>
         </div>

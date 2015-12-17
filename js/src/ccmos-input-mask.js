@@ -4,9 +4,9 @@
     app.directive('ccmosInputMask', [function () {
         return {
             restrict: 'A',
-            link: function (scope, element, attr) {
-                var im = new Inputmask(attr.ccmosInputMask);
-                im.mask(element[0]);
+            require: 'ngModel',
+            link: function (scope, element, attr, ngModel) {
+                element.inputmask(attr.ccmosInputMask);
             }
         }
     }]);
